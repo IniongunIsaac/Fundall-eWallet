@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Dimensions-->
+    <dimen name="app_text_size">14sp</dimen>
+    <dimen name="app_small_text_size">10sp</dimen>
+    <dimen name="app_medium_text_size">10sp</dimen>
+    <dimen name="app_big_text_size">18sp</dimen>
+    <dimen name="app_large_text_size">20sp</dimen>
+    <dimen name="app_super_large_text_size">24sp</dimen>
+    <dimen name="app_corner_radius">5dp</dimen>
+
+</resources>
