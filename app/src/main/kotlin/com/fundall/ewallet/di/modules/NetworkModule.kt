@@ -3,6 +3,7 @@ package com.fundall.ewallet.di.modules
 import com.fundall.ewallet.BuildConfig
 import com.fundall.ewallet.data.service.EWalletApiService
 import com.fundall.ewallet.di.scopes.AppScope
+import com.fundall.ewallet.interceptors.AppApiResponseInterceptor
 import com.fundall.ewallet.interceptors.AppAuthorizationHeaderInterceptor
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
@@ -39,10 +40,12 @@ class NetworkModule {
     internal fun provideOkhttpClient(
         cache: Cache,
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        authorizationTokenInterceptor: AppAuthorizationHeaderInterceptor
+        authHeaderInterceptor: AppAuthorizationHeaderInterceptor,
+        apiResponseInterceptor: AppApiResponseInterceptor
         ) = OkHttpClient.Builder().apply {
             addInterceptor(httpLoggingInterceptor)
-            addInterceptor(authorizationTokenInterceptor)
+            addInterceptor(authHeaderInterceptor)
+            addInterceptor(apiResponseInterceptor)
             cache(cache)
             followRedirects(true)
             followSslRedirects(true)

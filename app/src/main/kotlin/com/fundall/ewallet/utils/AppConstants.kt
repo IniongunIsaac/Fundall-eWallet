@@ -15,4 +15,16 @@ object AppConstants {
     const val CANT_BE_SAVED_TO_PREFERENCES_MESSAGE = "This type value can't be saved into Preferences"
 
     const val AUTHORIZATION_TOKEN = "Authorization Token"
+
+    object URLS {
+        const val REGISTER = "register"
+        const val LOGIN = "login"
+        const val GET_USER_DATA = "base/profile"
+        const val UPDATE_AVATAR = "base/avatar"
+    }
+
+    const val USER_DETAILS = "User Details"
+    const val USER_DATA_DETAILS = "User Data Details"
+    const val HAS_SAVED_USER_DETAILS = "Has Saved User Details"
+    const val HAS_SAVED_USER_DATA_DETAILS = "Has Saved User Data Details"
 }

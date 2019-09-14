@@ -1,8 +1,11 @@
 package com.fundall.ewallet.data.preference
 
 import android.content.Context
+import com.fundall.ewallet.data.models.User
+import com.fundall.ewallet.data.models.UserData
 import com.fundall.ewallet.utils.AppConstants
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import javax.inject.Inject
 
 class IAppPreferenceImpl @Inject constructor(private val context: Context, private val gson: Gson) : IAppPreference {
@@ -13,6 +16,26 @@ class IAppPreferenceImpl @Inject constructor(private val context: Context, priva
     override var authorizationToken: String
         get() = getPreference(AppConstants.AUTHORIZATION_TOKEN, "")
         set(value) = setPreference(AppConstants.AUTHORIZATION_TOKEN, value)
+
+    private val userType = object : TypeToken<User>() {}.type
+
+    override var userDetails: User
+        get() = gson.fromJson<User>(getPreference(AppConstants.USER_DETAILS, ""), userType)
+        set(value) = setPreference(AppConstants.USER_DETAILS, gson.toJson(value))
+
+    private val userDataType = object : TypeToken<UserData>() {}.type
+
+    override var userDataDetails: UserData
+        get() = gson.fromJson<UserData>(getPreference(AppConstants.USER_DATA_DETAILS, ""), userDataType)
+        set(value) = setPreference(AppConstants.USER_DATA_DETAILS, gson.toJson(value))
+
+    override var hasSavedUserDetails: Boolean
+        get() = getPreference(AppConstants.HAS_SAVED_USER_DETAILS, false)
+        set(value) = setPreference(AppConstants.HAS_SAVED_USER_DETAILS, value)
+
+    override var hasSavedUserDataDetails: Boolean
+        get() = getPreference(AppConstants.HAS_SAVED_USER_DATA_DETAILS, false)
+        set(value) = setPreference(AppConstants.HAS_SAVED_USER_DATA_DETAILS, value)
 
     @Suppress("UNCHECKED_CAST")
     @Synchronized
