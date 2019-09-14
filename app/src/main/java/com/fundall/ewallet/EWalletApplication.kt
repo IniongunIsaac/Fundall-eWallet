@@ -1,5 +1,7 @@
 package com.fundall.ewallet
 
+import com.fundall.ewallet.di.components.AppComponent
+import com.fundall.ewallet.di.components.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
@@ -9,7 +11,21 @@ import dagger.android.DaggerApplication
  */
 
 class EWalletApplication: DaggerApplication() {
+
+    private lateinit var appComponent: AppComponent
+
+    override fun onCreate() {
+        super.onCreate()
+
+        appComponent.inject(this)
+    }
+
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        appComponent = DaggerAppComponent.builder()
+            .bindEWalletApplicationInstance(this)
+            .buildAppComponent()
+
+        return appComponent
     }
 }
