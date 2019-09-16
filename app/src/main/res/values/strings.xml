@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Fundall eWallet</string>
+    <string name="fundall_text">fundall</string>
+    <string name="start_text">Start</string>
+    <string name="financial_partner_text">A financial partner</string>
+    <string name="for_everyone_text">for everyone</string>
+    <string name="privacy_policy_text">privacy policy</string>
+    <string name="and_text">and</string>
+    <string name="by_clicking_sign_up_text">By clicking Sign Up, you agree to our</string>
+    <string name="terms_conditions_text"><![CDATA[terms & conditions]]></string>
+    <string name="first_step_text">Your first step toward a better financial lifestyle starts here</string>
+    <string name="get_started_text">Let\'s get started</string>
+    <string name="first_name_text">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="email_address_text">Email address</string>
+    <string name="phone_number_text">Phone number</string>
+    <string name="password_text">Password</string>
+    <string name="sign_up_text">SIGN UP</string>
+    <string name="got_invite_code_text">Got invite code?</string>
+    <string name="already_a_member_text">Already a member?</string>
+    <string name="login_text">Login</string>
 </resources>

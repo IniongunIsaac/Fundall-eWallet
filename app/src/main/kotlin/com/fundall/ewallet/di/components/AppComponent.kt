@@ -1,12 +1,13 @@
 package com.fundall.ewallet.di.components
 
-import android.content.Context
 import com.fundall.ewallet.EWalletApplication
 import com.fundall.ewallet.di.modules.*
+import com.fundall.ewallet.di.scopes.AppScope
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 
 /**
  * Created by Isaac Iniongun on 2019-09-14.
@@ -18,20 +19,21 @@ import dagger.android.AndroidInjector
     AndroidInjectionModule::class,
     NetworkModule::class,
     AppViewModelsModule::class,
-    AppUIBindingModule::class,
+    AppActivityBindingModule::class,
     AppModule::class,
     PreferenceModule::class
     ]
 )
-interface AppComponent: AndroidInjector<EWalletApplication> {
+@AppScope
+interface AppComponent: AndroidInjector<DaggerApplication> {
 
-    fun inject(context: Context)
+    fun inject(eWalletApplication: EWalletApplication)
 
     @Component.Builder
     interface Builder {
 
         @BindsInstance
-        fun bindEWalletApplicationInstance(context: EWalletApplication): Builder
+        fun bindEWalletApplicationInstance(eWalletApplication: EWalletApplication): Builder
 
         fun buildAppComponent(): AppComponent
     }

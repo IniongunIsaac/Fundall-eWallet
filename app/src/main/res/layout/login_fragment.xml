@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.fundall.ewallet.ui.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background"
+        tools:context=".ui.login.LoginFragment">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_center_icon"
+            tools:layout_editor_absoluteX="154dp"
+            tools:layout_editor_absoluteY="214dp" />
+
+        <TextView
+            android:id="@+id/chidima_textView"
+            style="@style/AppText.Header.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chidima's"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="311dp" />
+
+        <TextView
+            android:id="@+id/lifestyle_textView"
+            style="@style/AppText.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="lifestyle"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/chidima_textView"
+            app:layout_constraintStart_toEndOf="@+id/chidima_textView"
+            app:layout_constraintTop_toTopOf="@+id/chidima_textView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

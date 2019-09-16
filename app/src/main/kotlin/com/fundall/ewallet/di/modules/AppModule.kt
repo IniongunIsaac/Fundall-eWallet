@@ -1,6 +1,7 @@
 package com.fundall.ewallet.di.modules
 
 import android.content.Context
+import com.fundall.ewallet.EWalletApplication
 import com.fundall.ewallet.di.scopes.AppScope
 import com.fundall.ewallet.utils.AppConstants
 import com.google.gson.Gson
@@ -38,5 +39,9 @@ class AppModule {
     internal fun provideCache(file: File) = Cache (
         file, AppConstants.OKHTTP_CACHE_SIZE.toLong()
     )
+
+    @Provides
+    @AppScope
+    internal fun bindContext(eWalletApplication: EWalletApplication): Context = eWalletApplication
 
 }

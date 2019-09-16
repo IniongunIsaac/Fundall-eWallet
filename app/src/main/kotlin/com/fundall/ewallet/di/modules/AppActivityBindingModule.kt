@@ -1,7 +1,7 @@
 package com.fundall.ewallet.di.modules
 
 import com.fundall.ewallet.di.scopes.PerActivity
-import com.fundall.ewallet.ui.MainActivity
+import com.fundall.ewallet.ui.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -11,10 +11,10 @@ import dagger.android.ContributesAndroidInjector
  */
 
 @Module
-abstract class AppUIBindingModule {
+abstract class AppActivityBindingModule {
 
     @PerActivity
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [AppMainFragmentsBindingModule::class])
     internal abstract fun bindMainActivity(): MainActivity
 
 }

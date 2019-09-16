@@ -1,10 +1,13 @@
 package com.fundall.ewallet.di.modules
 
 import com.fundall.ewallet.BuildConfig
-import com.fundall.ewallet.data.service.EWalletApiService
+import com.fundall.ewallet.data.network.EWalletApiService
+import com.fundall.ewallet.data.repository.EWalletRepository
+import com.fundall.ewallet.data.repository.EWalletRepositoryImpl
 import com.fundall.ewallet.di.scopes.AppScope
 import com.fundall.ewallet.interceptors.AppApiResponseInterceptor
 import com.fundall.ewallet.interceptors.AppAuthorizationHeaderInterceptor
+import com.fundall.ewallet.interceptors.ConnectivityInterceptor
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -41,11 +44,13 @@ class NetworkModule {
         cache: Cache,
         httpLoggingInterceptor: HttpLoggingInterceptor,
         authHeaderInterceptor: AppAuthorizationHeaderInterceptor,
-        apiResponseInterceptor: AppApiResponseInterceptor
+        apiResponseInterceptor: AppApiResponseInterceptor,
+        connectivityInterceptor: ConnectivityInterceptor
         ) = OkHttpClient.Builder().apply {
             addInterceptor(httpLoggingInterceptor)
             addInterceptor(authHeaderInterceptor)
             addInterceptor(apiResponseInterceptor)
+            addInterceptor(connectivityInterceptor)
             cache(cache)
             followRedirects(true)
             followSslRedirects(true)
@@ -69,5 +74,9 @@ class NetworkModule {
     @Provides
     @AppScope
     internal fun provideEWalletApiService(retrofit: Retrofit) = retrofit.create(EWalletApiService::class.java)
+
+    @Provides
+    @AppScope
+    internal fun provideEWalletRepository(eWalletApiService: EWalletApiService): EWalletRepository = EWalletRepositoryImpl(eWalletApiService)
 
 }

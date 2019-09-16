@@ -1,4 +1,4 @@
-package com.fundall.ewallet.data.service
+package com.fundall.ewallet.data.network
 
 import com.fundall.ewallet.data.models.BaseResponse
 import com.fundall.ewallet.data.models.User
@@ -17,13 +17,13 @@ import retrofit2.http.POST
 interface EWalletApiService {
 
     @POST(AppConstants.URLS.REGISTER)
-    fun registerUser(@Body requestBody: HashMap<String, String>): Deferred<BaseResponse<Nothing>>
+    fun registerUserAsync(@Body requestBody: HashMap<String, String>): Deferred<BaseResponse<Nothing>>
 
     @POST(AppConstants.URLS.LOGIN)
-    fun authenticateUser(@Body requestBody: HashMap<String, String>): Deferred<BaseResponse<User>>
+    fun authenticateUserAsync(@Body requestBody: HashMap<String, String>): Deferred<BaseResponse<User>>
 
     @GET(AppConstants.URLS.GET_USER_DATA)
-    fun getUserData(): Deferred<BaseResponse<UserData>>
+    fun getUserDataAsync(): Deferred<BaseResponse<UserData>>
 
     @POST(AppConstants.URLS.UPDATE_AVATAR)
     fun updateAvatar(@Body requestBody: HashMap<String, String>)
