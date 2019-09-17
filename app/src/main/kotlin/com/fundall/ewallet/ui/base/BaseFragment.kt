@@ -10,7 +10,6 @@ import androidx.annotation.LayoutRes
 import androidx.core.content.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -24,7 +23,7 @@ import kotlin.coroutines.CoroutineContext
  * For Fundall eWallet project.
  */
 
-abstract class BaseFragment<in DB : ViewDataBinding, out WM : ViewModel> : DaggerFragment(), CoroutineScope {
+abstract class BaseFragment<in DB : ViewDataBinding, out WM : BaseViewModel> : DaggerFragment(), CoroutineScope {
 
     private lateinit var job: Job
 

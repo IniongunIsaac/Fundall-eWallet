@@ -17,11 +17,12 @@ class AppAuthorizationHeaderInterceptor @Inject constructor (
     override fun intercept(chain: Interceptor.Chain): Response {
         val newRequest = appPreference.authorizationToken.let {
             val request = chain.request()
-            request.newBuilder().addHeader(
+            request.newBuilder()
+                .addHeader("Content-Type", "Application/Json")
+                .addHeader(
                 "Authorization", "Bearer $it"
             ).build()
         } ?: chain.request()
-
 
         return chain.proceed(newRequest)
     }

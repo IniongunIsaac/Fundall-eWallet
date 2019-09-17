@@ -19,4 +19,19 @@
     <string name="got_invite_code_text">Got invite code?</string>
     <string name="already_a_member_text">Already a member?</string>
     <string name="login_text">Login</string>
+    <string name="lifestyle_text">lifestyle</string>
+    <string name="chidimi_text">Chidimi\'s</string>
+    <string name="not_chidimi_text">Not Chidimi?</string>
+    <string name="switch_account_text">Switch Account</string>
+    <string name="new_here_text">New here?</string>
+    <string name="create_account_text">Create Account</string>
+    <string name="biometrics_text">Biometrics</string>
+    <string name="center_icon_text">Center Icon</string>
+    <string name="password_background_image_text">Password Background Image</string>
+    <string name="biometrics_background_image_text">Biometrics Background Image</string>
+    <string name="biometrics_image_text">Biometrics Image</string>
+    <string name="forgot_password_text">Forgot Password?</string>
+    <string name="we_miss_you_text">We miss you, Chidimi</string>
+    <string name="back_text">Back</string>
+    <string name="welcome_back_text">Welcome Back!</string>
 </resources>

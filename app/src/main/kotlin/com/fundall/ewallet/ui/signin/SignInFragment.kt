@@ -1,35 +1,43 @@
-package com.fundall.ewallet.ui.register
+package com.fundall.ewallet.ui.signin
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.fundall.ewallet.BR
 import com.fundall.ewallet.R
-import com.fundall.ewallet.databinding.RegisterFragmentBinding
+import com.fundall.ewallet.databinding.SignInFragmentBinding
 import com.fundall.ewallet.ui.base.BaseFragment
 import com.fundall.ewallet.utils.AppResultState
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
 
-class RegisterFragment : BaseFragment<RegisterFragmentBinding, RegisterViewModel>() {
+class SignInFragment : BaseFragment<SignInFragmentBinding, SignInViewModel>() {
 
     @Inject
-    lateinit var registerViewModel: RegisterViewModel
+    lateinit var signInViewModel: SignInViewModel
 
-    private lateinit var binding: RegisterFragmentBinding
+    private lateinit var binding: SignInFragmentBinding
+
+    override fun getViewModel() = signInViewModel
+
+    override fun getLayoutId() = R.layout.sign_in_fragment
+
+    override fun getBindingVariable() = BR.viewmodel
+
+    override fun getLayoutBinding(binding: SignInFragmentBinding) {
+        this.binding = binding
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        registerViewModel.registrationResultStateLiveData.observe(this, Observer {
+        signInViewModel.loginResultStateLiveData.observe(this, Observer {
             when(it.state) {
 
                 AppResultState.SUCCESS -> {
                     dismissLoadingDialog()
                     showMessageSnackBar(binding.root, it.message!!, false, duration = Snackbar.LENGTH_LONG)
-                    //navigate to login fragment
-                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                    //navigate to home fragment
                 }
 
                 AppResultState.LOADING -> {
@@ -46,13 +54,4 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding, RegisterViewModel
 
     }
 
-    override fun getViewModel() = registerViewModel
-
-    override fun getLayoutId() = R.layout.register_fragment
-
-    override fun getBindingVariable() = BR.viewmodel
-
-    override fun getLayoutBinding(binding: RegisterFragmentBinding) {
-        this.binding = binding
-    }
 }

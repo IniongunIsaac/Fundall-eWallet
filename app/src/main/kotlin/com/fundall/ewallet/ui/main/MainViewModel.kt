@@ -1,6 +1,6 @@
 package com.fundall.ewallet.ui.main
 
-import androidx.lifecycle.ViewModel
+import com.fundall.ewallet.ui.base.BaseViewModel
 import javax.inject.Inject
 
 /**
@@ -8,5 +8,8 @@ import javax.inject.Inject
  * For Fundall eWallet project.
  */
 
-class MainViewModel @Inject constructor(): ViewModel() {
+class MainViewModel @Inject constructor(): BaseViewModel() {
+
+    override fun handleCoroutineException(errorMessage: String) {}
+
 }

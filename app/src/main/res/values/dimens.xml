@@ -13,5 +13,7 @@
     <dimen name="input_drawable_padding">10dp</dimen>
     <dimen name="input_margin_between">15dp</dimen>
     <dimen name="sign_up_button_width">200dp</dimen>
+    <dimen name="login_imageview_bg_dimen">55dp</dimen>
+    <dimen name="login_inner_imageview_dimen">30dp</dimen>
 
 </resources>

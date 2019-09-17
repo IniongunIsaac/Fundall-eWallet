@@ -1,7 +1,10 @@
 package com.fundall.ewallet.ui.home
 
-import androidx.lifecycle.ViewModel
+import com.fundall.ewallet.ui.base.BaseViewModel
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class HomeViewModel @Inject constructor() : BaseViewModel() {
+    override fun handleCoroutineException(errorMessage: String) {
+
+    }
 }

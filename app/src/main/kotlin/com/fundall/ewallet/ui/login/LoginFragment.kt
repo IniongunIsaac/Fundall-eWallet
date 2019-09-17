@@ -1,33 +1,43 @@
 package com.fundall.ewallet.ui.login
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import com.fundall.ewallet.BR
 import com.fundall.ewallet.R
+import com.fundall.ewallet.databinding.LoginFragmentBinding
+import com.fundall.ewallet.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.login_fragment.*
+import javax.inject.Inject
 
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
 
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
+    @Inject
+    lateinit var loginViewModel: LoginViewModel
 
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var binding: LoginFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.login_fragment, container, false)
+    override fun getViewModel() = loginViewModel
+
+    override fun getLayoutId() = R.layout.login_fragment
+
+    override fun getBindingVariable() = BR.viewmodel
+
+    override fun getLayoutBinding(binding: LoginFragmentBinding) {
+        this.binding = binding
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        password_background_imageView.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_signInFragment)
+        }
+
+        create_account_button.setOnClickListener {
+            findNavController().navigate(R.id.registerFragment)
+        }
+
     }
 
 }

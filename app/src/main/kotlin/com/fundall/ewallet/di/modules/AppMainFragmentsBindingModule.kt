@@ -4,6 +4,7 @@ import com.fundall.ewallet.di.scopes.PerFragment
 import com.fundall.ewallet.ui.home.HomeFragment
 import com.fundall.ewallet.ui.login.LoginFragment
 import com.fundall.ewallet.ui.register.RegisterFragment
+import com.fundall.ewallet.ui.signin.SignInFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -26,5 +27,9 @@ abstract class AppMainFragmentsBindingModule {
     @PerFragment
     @ContributesAndroidInjector
     internal abstract fun bindHomeFragment(): HomeFragment
+
+    @PerFragment
+    @ContributesAndroidInjector
+    internal abstract fun bindSignInFragment(): SignInFragment
 
 }

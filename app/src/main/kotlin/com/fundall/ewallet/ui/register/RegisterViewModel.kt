@@ -3,26 +3,17 @@ package com.fundall.ewallet.ui.register
 import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.fundall.ewallet.data.repository.EWalletRepository
+import com.fundall.ewallet.ui.base.BaseViewModel
 import com.fundall.ewallet.utils.AppResource
 import com.fundall.ewallet.utils.isValidEmail
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 class RegisterViewModel @Inject constructor(
     private val eWalletRepository: EWalletRepository
-) : ViewModel(), CoroutineScope {
-
-    private var job: Job = Job()
-
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        _registrationResultStateLiveData.postValue(AppResource.failure(throwable.message ?: "An error occurred."))
-    }
-
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main + coroutineExceptionHandler
+) : BaseViewModel() {
 
     var firstName = ""
     var lastName = ""
@@ -92,6 +83,10 @@ class RegisterViewModel @Inject constructor(
 
     }
 
+    override fun handleCoroutineException(errorMessage: String) {
+        _registrationResultStateLiveData.postValue(AppResource.failure(errorMessage))
+    }
+
     fun login() {
 
     }
@@ -101,10 +96,5 @@ class RegisterViewModel @Inject constructor(
     fun termsAndConditions() { }
 
     fun privacyPolicy() { }
-
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel()
-    }
 
 }

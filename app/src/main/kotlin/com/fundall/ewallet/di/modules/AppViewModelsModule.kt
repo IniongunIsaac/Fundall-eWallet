@@ -7,6 +7,7 @@ import com.fundall.ewallet.ui.home.HomeViewModel
 import com.fundall.ewallet.ui.login.LoginViewModel
 import com.fundall.ewallet.ui.main.MainViewModel
 import com.fundall.ewallet.ui.register.RegisterViewModel
+import com.fundall.ewallet.ui.signin.SignInViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -49,6 +50,14 @@ abstract class AppViewModelsModule {
     @AppViewModelKey(HomeViewModel::class)
     internal abstract fun bindHomeViewModel(
         viewModel: HomeViewModel
+    ): ViewModel
+
+    @Binds
+    @IntoMap
+    @AppScope
+    @AppViewModelKey(SignInViewModel::class)
+    internal abstract fun bindSignInViewModel(
+        viewModel: SignInViewModel
     ): ViewModel
 
 }

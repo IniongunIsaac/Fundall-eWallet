@@ -48,6 +48,8 @@ android {
     }
 }
 
+android.defaultConfig.vectorDrawables.useSupportLibrary = true
+
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -98,6 +100,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    implementation 'com.facebook.fresco:fresco:2.0.0'
 
     //Timber
     implementation "com.jakewharton.timber:timber:$timber_version"

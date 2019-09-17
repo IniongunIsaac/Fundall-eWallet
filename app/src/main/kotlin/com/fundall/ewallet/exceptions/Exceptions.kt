@@ -7,4 +7,4 @@ import java.io.IOException
  * For Fundall eWallet project.
  */
 
-class NoConnectivityException: IOException()
+class NoConnectivityException(message: String = "No internet connection!"): IOException(message)
