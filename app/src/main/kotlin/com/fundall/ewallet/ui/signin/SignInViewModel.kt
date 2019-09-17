@@ -32,7 +32,7 @@ class SignInViewModel @Inject constructor(
                 //save authToken in shared preferences
                 appPreference.authorizationToken = it.response.data.accessToken
 
-                _loginResultStateLiveData.postValue(AppResource.success(data = it.response.data, message = it.response.message))
+                _loginResultStateLiveData.postValue(AppResource.success(data = it.response.data, message = "Sign in success."))
 
             } else {
                 _loginResultStateLiveData.postValue(AppResource.failure(it.response.message))
@@ -52,6 +52,8 @@ class SignInViewModel @Inject constructor(
 
             return
         }
+
+        _loginResultStateLiveData.postValue(AppResource.loading())
 
         launch(Dispatchers.IO) {
             eWalletRepository.authenticateUser(

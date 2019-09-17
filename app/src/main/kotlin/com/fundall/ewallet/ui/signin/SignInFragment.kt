@@ -2,6 +2,7 @@ package com.fundall.ewallet.ui.signin
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.fundall.ewallet.BR
 import com.fundall.ewallet.R
 import com.fundall.ewallet.databinding.SignInFragmentBinding
@@ -22,7 +23,7 @@ class SignInFragment : BaseFragment<SignInFragmentBinding, SignInViewModel>() {
 
     override fun getLayoutId() = R.layout.sign_in_fragment
 
-    override fun getBindingVariable() = BR.viewmodel
+    override fun getBindingVariable() = BR.viewModel
 
     override fun getLayoutBinding(binding: SignInFragmentBinding) {
         this.binding = binding
@@ -38,6 +39,7 @@ class SignInFragment : BaseFragment<SignInFragmentBinding, SignInViewModel>() {
                     dismissLoadingDialog()
                     showMessageSnackBar(binding.root, it.message!!, false, duration = Snackbar.LENGTH_LONG)
                     //navigate to home fragment
+                    findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
                 }
 
                 AppResultState.LOADING -> {

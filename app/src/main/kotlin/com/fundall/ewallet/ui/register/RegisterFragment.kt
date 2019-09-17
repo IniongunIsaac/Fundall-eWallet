@@ -8,6 +8,7 @@ import com.fundall.ewallet.R
 import com.fundall.ewallet.databinding.RegisterFragmentBinding
 import com.fundall.ewallet.ui.base.BaseFragment
 import com.fundall.ewallet.utils.AppResultState
+import com.fundall.ewallet.utils.MainNavigationConstants
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
@@ -29,7 +30,7 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding, RegisterViewModel
                     dismissLoadingDialog()
                     showMessageSnackBar(binding.root, it.message!!, false, duration = Snackbar.LENGTH_LONG)
                     //navigate to login fragment
-                    findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                    navigateToLogin()
                 }
 
                 AppResultState.LOADING -> {
@@ -44,6 +45,16 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding, RegisterViewModel
             }
         })
 
+        registerViewModel.mainNavigationLiveData.observe(this, Observer {
+            when(it) {
+                MainNavigationConstants.LOGIN -> navigateToLogin()
+            }
+        })
+
+    }
+
+    private fun navigateToLogin() {
+        findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
     }
 
     override fun getViewModel() = registerViewModel

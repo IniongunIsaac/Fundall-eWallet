@@ -104,7 +104,7 @@
                 android:drawablePadding="@dimen/input_drawable_padding"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
-                android:text="@={viewmodel.emailAddress}" />
+                android:text="@={viewModel.emailAddress}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -122,7 +122,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_textInputEditText"
-                android:text="@={viewmodel.password}"
+                android:text="@={viewModel.password}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_lock_outline_faint"
@@ -135,7 +135,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login_button"
-            android:onClick="@{() -> viewmodel.sigin()}"
+            android:onClick="@{() -> viewModel.signin()}"
             style="@style/AppButton.Filled"
             android:layout_width="@dimen/sign_up_button_width"
             android:layout_height="wrap_content"

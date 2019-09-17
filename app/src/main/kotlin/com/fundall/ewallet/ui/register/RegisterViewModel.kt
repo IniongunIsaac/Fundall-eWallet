@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.fundall.ewallet.data.repository.EWalletRepository
 import com.fundall.ewallet.ui.base.BaseViewModel
 import com.fundall.ewallet.utils.AppResource
+import com.fundall.ewallet.utils.MainNavigationConstants
 import com.fundall.ewallet.utils.isValidEmail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,6 +32,9 @@ class RegisterViewModel @Inject constructor(
             }
         }
     }
+
+    private val _mainNavigationLiveData = MutableLiveData<MainNavigationConstants>()
+    val mainNavigationLiveData: LiveData<MainNavigationConstants> = _mainNavigationLiveData
 
     private val _registrationResultStateLiveData = MutableLiveData<AppResource<Unit>>()
     val registrationResultStateLiveData: LiveData<AppResource<Unit>> = _registrationResultStateLiveData
@@ -88,7 +92,7 @@ class RegisterViewModel @Inject constructor(
     }
 
     fun login() {
-
+        _mainNavigationLiveData.postValue(MainNavigationConstants.LOGIN)
     }
 
     fun getInviteCode() { }
