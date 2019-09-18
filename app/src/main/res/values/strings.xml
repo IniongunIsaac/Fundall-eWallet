@@ -34,4 +34,15 @@
     <string name="we_miss_you_text">We miss you, Chidimi</string>
     <string name="back_text">Back</string>
     <string name="welcome_back_text">Welcome Back!</string>
+    <string name="naira_amount_text">₦12,634.37</string>
+    <string name="income_text">Income</string>
+    <string name="fundall_e_wallet_text">Fundall e-Wallet</string>
+    <string name="account_id_text">Account ID: 901785611, Providus</string>
+    <string name="total_balance_text">Total Balance</string>
+    <string name="spent_text">Spent</string>
+    <string name="request_for_new_lifestyle_card_text">Request for new Lifestyle Card</string>
+    <string name="add_other_cards_text">Add other Cards</string>
+    <string name="manage_card_settings_text">Manage Card Settings</string>
+    <string name="cards_text">Cards</string>
+    <string name="amount_placeholder">₦ %d</string>
 </resources>

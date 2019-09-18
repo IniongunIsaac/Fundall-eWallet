@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.fundall.ewallet.data.models.BaseResponse
 import com.fundall.ewallet.data.models.User
+import com.fundall.ewallet.data.models.UserData
 import com.fundall.ewallet.data.network.EWalletApiService
 import javax.inject.Inject
 
@@ -27,5 +28,14 @@ class EWalletRepositoryImpl @Inject constructor(
     override suspend fun authenticateUser(data: HashMap<String, String>) {
         val loginRes = eWalletApiService.authenticateUserAsync(data).await()
         _loginResponse.postValue(loginRes)
+    }
+
+
+    private val _userDataResponse = MutableLiveData<BaseResponse<UserData>>()
+    override val userDataResponse: LiveData<BaseResponse<UserData>>
+        get() = _userDataResponse
+
+    override suspend fun getUserData() {
+        _userDataResponse.postValue(eWalletApiService.getUserDataAsync().await())
     }
 }

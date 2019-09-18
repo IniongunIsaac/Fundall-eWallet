@@ -1,5 +1,6 @@
 package com.fundall.ewallet
 
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.fundall.ewallet.di.components.AppComponent
 import com.fundall.ewallet.di.components.DaggerAppComponent
 import dagger.android.AndroidInjector
@@ -16,6 +17,8 @@ class EWalletApplication: DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
+
+        Fresco.initialize(this)
 
         appComponent.inject(this)
     }

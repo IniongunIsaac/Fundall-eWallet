@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -11,9 +12,295 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/login_background"
+        android:background="@drawable/wallet_home_bg"
         tools:context=".ui.home.HomeFragment">
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+        <ImageView
+            android:id="@+id/logout_imageView"
+            android:layout_width="28dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="@+id/start_guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_logout" />
+
+        <TextView
+            android:id="@+id/fundall_e_wallet_textView"
+            style="@style/AppText.SuperHeader.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/fundall_e_wallet_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:id="@+id/user_card_view"-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:background="@drawable/ic_person_black_72dp"-->
+<!--            app:cardCornerRadius="200dp"-->
+<!--            app:cardElevation="0dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/end_guideline"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/user_imageView"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/user_card_view"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/user_card_view"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/user_card_view"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/user_card_view"-->
+<!--            app:layout_constraintVertical_bias="0.35000002"-->
+<!--            app:srcCompat="@drawable/ic_person_black_72dp" />-->
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/user_imageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="14dp"
+            app:roundAsCircle="true"
+            app:placeholderImage="@drawable/ic_person_black_72dp"
+            app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/account_id_textView"
+                    style="@style/AppText.White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="@string/account_id_text"
+                    app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                    app:layout_constraintStart_toStartOf="@+id/start_guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/fundall_e_wallet_textView" />
+
+                <TextView
+                    android:id="@+id/total_balance_textView"
+                    style="@style/AppText.White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/total_balance_text"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                    app:layout_constraintStart_toStartOf="@+id/start_guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/account_id_textView" />
+
+                <TextView
+                    android:id="@+id/total_balance_value_textview"
+                    style="@style/AppText.SuperHeader.White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naira_amount_text"
+                    android:textSize="30sp"
+                    app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                    app:layout_constraintStart_toStartOf="@+id/start_guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/total_balance_textView" />
+
+                <TextView
+                    android:id="@+id/income_label_textView"
+                    style="@style/AppText.Medium.White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/income_text"
+                    app:layout_constraintStart_toStartOf="@+id/start_guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/total_balance_value_textview" />
+
+                <TextView
+                    android:id="@+id/income_textView"
+                    style="@style/AppText.Header.White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/naira_amount_text"
+                    app:layout_constraintStart_toStartOf="@+id/income_label_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/income_label_textView" />
+
+                <TextView
+                    android:id="@+id/spent_label_textView"
+                    style="@style/AppText.Medium.White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/spent_text"
+                    app:layout_constraintStart_toStartOf="@+id/spent_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/total_balance_value_textview" />
+
+                <TextView
+                    android:id="@+id/spent_textView"
+                    style="@style/AppText.Header.White"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:text="@string/naira_amount_text"
+                    app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/spent_label_textView" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardView"
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="24dp"
+                    app:cardBackgroundColor="#0E1015"
+                    app:cardCornerRadius="45dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/income_textView"
+                    tools:layout_constraintEnd_toEndOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/request_new_card_imageView"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="24dp"
+                            app:layout_constraintEnd_toStartOf="@+id/textView11"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_white_rounded_bg" />
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            style="@style/AppText.White"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/request_for_new_lifestyle_card_text"
+                            app:layout_constraintBottom_toBottomOf="@+id/request_new_card_imageView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/request_new_card_imageView"
+                            app:layout_constraintTop_toTopOf="@+id/request_new_card_imageView" />
+
+                        <ImageView
+                            android:id="@+id/add_card_imageView"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintStart_toStartOf="@+id/request_new_card_imageView"
+                            app:layout_constraintTop_toBottomOf="@+id/request_new_card_imageView"
+                            app:srcCompat="@drawable/ic_white_rounded_bg" />
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            style="@style/AppText.White"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/add_other_cards_text"
+                            app:layout_constraintBottom_toBottomOf="@+id/add_card_imageView"
+                            app:layout_constraintStart_toEndOf="@+id/add_card_imageView"
+                            app:layout_constraintTop_toTopOf="@+id/add_card_imageView" />
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintStart_toStartOf="@+id/add_card_imageView"
+                            app:layout_constraintTop_toBottomOf="@+id/add_card_imageView"
+                            app:srcCompat="@drawable/ic_white_rounded_bg" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            style="@style/AppText.White"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="@string/manage_card_settings_text"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                            app:layout_constraintStart_toEndOf="@+id/imageView5"
+                            app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="500dp"
+                    app:cardCornerRadius="45dp"
+                    app:cardElevation="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/materialCardView"
+                    tools:layout_constraintBottom_toBottomOf="@id/materialCardView">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <TextView
+                            android:id="@+id/cards_textView"
+                            style="@style/AppText.Header"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="40dp"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginTop="24dp"
+                            android:text="@string/cards_text"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="150dp"
+                            android:layout_height="0dp"
+                            android:layout_marginEnd="40dp"
+                            android:layout_marginRight="40dp"
+                            app:cardBackgroundColor="#C4C4C4"
+                            app:cardCornerRadius="5dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/cardView2" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardView2"
+                            android:layout_width="150dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="32dp"
+                            app:cardBackgroundColor="#C4C4C4"
+                            app:cardCornerRadius="5dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/cards_textView"
+                            app:layout_constraintTop_toBottomOf="@+id/cards_textView" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </layout>
